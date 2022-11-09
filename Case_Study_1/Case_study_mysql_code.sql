@@ -1,6 +1,7 @@
 #Welcome to my take on week 1 of the Danny Ma 8 week SQL challenge
 #all data were sourced from https://8weeksqlchallenge.com/case-study-1/
 
+# Creation of Schema and Loading of data
 CREATE SCHEMA dannys_diner;
 use dannys_diner;
 #Create Tables and Load in data
