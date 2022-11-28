@@ -26,7 +26,9 @@ All datasets exist within the dannys_diner database schema.
 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ##Bonus Questions
+
 A. Recreate the following table output using the available data:
+
 ![SQLChallengeWeek1_Bonus Question A](https://user-images.githubusercontent.com/88348888/204283728-a793d544-315b-48f0-a2e3-6e6f8f3e245b.JPG)
 
 B.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
