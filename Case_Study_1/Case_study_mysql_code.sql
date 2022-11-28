@@ -256,7 +256,7 @@ WHERE
 select 440+0;
 
 #Bonus Questions
-#1
+#A
 SELECT 
     s.customer_id AS customer,
     s.order_date AS order_date,
@@ -273,7 +273,7 @@ FROM
         LEFT JOIN
     members m2 ON s.customer_id = m2.customer_id
     ORDER BY s.customer_id,s.order_date,m.product_name;
-#2
+#B
 with diner_membership as (SELECT 
     s.customer_id AS customer,
     s.order_date AS order_date,
