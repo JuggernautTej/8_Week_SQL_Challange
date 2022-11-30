@@ -14,7 +14,7 @@ FROM
 # runner_orders
 /* For this table, I replaced all 'null' values with null in the pickup_time, distance and duration columns. 
 I made all entries in the distance and duration columns numbers only except for the null entries.Also, I converted the pickup_time column to datetime data type. 
-Finally, I converted the 'null' entries in the cancellation column to 'none'.*/
+Finally, I converted the 'null' entries in the cancellation column to 'none' and saved the changes into a new table.*/
 
 drop table if exists runner_orders_cleaned;
 create table runner_orders_cleaned
