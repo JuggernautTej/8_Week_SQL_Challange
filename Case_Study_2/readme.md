@@ -18,7 +18,7 @@ He has prepared for us an entity relationship diagram of his database design but
 
 All datasets exist within the pizza_runner database schema as represented in the diagram below.
 
-![SQLChallenge2_Schema](https://user-images.githubusercontent.com/88348888/204797187-ee774da0-166d-4ffa-8839-9ee91fd842f6.png)
+![SQLChallenge2_Schema](https://user-images.githubusercontent.com/88348888/204798221-c8beb23f-d6a0-420f-bc25-34b8bad8cdb2.JPG)
 
 Table 1- runners; shows the registration_date for each new runner
 
