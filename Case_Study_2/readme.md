@@ -40,9 +40,13 @@ Table 6 - pizza_toppings; This table contains all of the topping_name values wit
 This case study has LOTS of questions - they are broken up by area of focus including:
 
 A. Pizza Metrics
+
 B. Runner and Customer Experience
+
 C. Ingredient Optimisation
+
 D. Pricing and Ratings
+
 E. Bonus DML Challenges (DML = Data Manipulation Language)
 
 Each of the following case study questions can be answered using a single SQL statement.
