@@ -1,5 +1,7 @@
 # Case Study 2 - Pizza Runner
 
+![SQLChallenge2](https://user-images.githubusercontent.com/88348888/204797060-1be07a5d-28ff-4f4d-b85b-6ebf33cf3582.png)
+
 ## Background
 
 Did you know that over 115 million kilograms of pizza is consumed daily worldwide??? (Well according to Wikipedia anyway…)
@@ -15,6 +17,8 @@ Because Danny had a few years of experience as a data scientist - he was very aw
 He has prepared for us an entity relationship diagram of his database design but requires further assistance to clean his data and apply some basic calculations so he can better direct his runners and optimise Pizza Runner’s operations.
 
 All datasets exist within the pizza_runner database schema as represented in the diagram below.
+
+![SQLChallenge2_Schema](https://user-images.githubusercontent.com/88348888/204797187-ee774da0-166d-4ffa-8839-9ee91fd842f6.png)
 
 Table 1- runners; shows the registration_date for each new runner
 
