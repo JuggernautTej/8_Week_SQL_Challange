@@ -12,8 +12,8 @@ He plans on using these insights to help him decide whether he should expand the
 
 Danny provided 3 data sets to use for the study; 
 - Sales; This table captures all customer_id level purchases with an corresponding order_date and product_id information for when and what menu items were ordered.
-- Members; The menu table maps the product_id to the actual product_name and price of each menu item. 
-- Menu; The final members table captures the join_date when a customer_id joined the beta version of the Danny’s Diner loyalty program. 
+- Menu; The menu table maps the product_id to the actual product_name and price of each menu item. 
+- Members; This table captures the join_date when a customer_id joined the beta version of the Danny’s Diner loyalty program. 
 
 All datasets exist within the dannys_diner database schema.
 
