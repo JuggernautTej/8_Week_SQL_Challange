@@ -72,3 +72,58 @@ FROM
 | Item        | no_of_times_purchased  |
 | ----------- | ---------------------- |
 | ramen       | 8                      |
+
+## Q5. Which item was the most popular for each customer?
+  ### For Customer A
+````sql
+SELECT 
+        m.product_name as product_name, COUNT(s.product_id) AS no_of_times_purchased
+    FROM
+        sales s
+    JOIN menu m ON s.product_id = m.product_id
+    where customer_id= 'A' 
+    GROUP BY s.product_id
+    order by no_of_times_purchased desc
+    limit 1
+ ````
+   
+| product_name | no_of_times_purchased  |
+| ------------ | ---------------------- |
+| ramen        | 3                      |
+
+  ### For customer B	
+````sql
+   SELECT 
+    m.product_name AS product_name,
+    COUNT(s.product_id) AS no_of_times_purchased
+FROM
+    sales s
+        JOIN
+    menu m ON s.product_id = m.product_id
+WHERE
+    customer_id = 'B'
+GROUP BY s.product_id
+ORDER BY no_of_times_purchased DESC
+  ````
+
+| product_name | no_of_times_purchased  |
+| ------------ | ---------------------- |
+| sushi        | 2                      |
+| curry        | 2                      |
+| ramen        | 2                      |
+
+   ### For Customer C
+````sql
+SELECT 
+        m.product_name as product_name, COUNT(s.product_id) AS no_of_times_purchased
+    FROM
+        sales s
+    JOIN menu m ON s.product_id = m.product_id
+    where customer_id= 'C' 
+    GROUP BY s.product_id
+    order by no_of_times_purchased desc
+      ````
+      
+| product_name | no_of_times_purchased  |
+| ------------ | ---------------------- |
+| ramen        | 3                      |
