@@ -135,7 +135,7 @@ GROUP BY c.customer_id;
 | 104         | 2                             | 1                               |
 | 105         | 1                             | 0                               |
 
-## Q8. How many pizzas were delivered that had both exclusions and extras?
+## Question 8; How many pizzas were delivered that had both exclusions and extras?
 ````sql
 SELECT 
         count(c.pizza_id) as delivered_pizzas_with_exclusions_and_extras
@@ -150,7 +150,7 @@ SELECT
 | ------------------------------------------- |
 | 1                                           | 
 
-## Q9. What was the total volume of pizzas ordered for each hour of the day?
+## Question 9; What was the total volume of pizzas ordered for each hour of the day?
 ````sql
 SELECT 
     HOUR(order_time) AS hour_of_day, COUNT(*) AS pizza_ordered
@@ -169,7 +169,7 @@ ORDER BY hour_of_day;
 | 21          | 3             |
 | 23          | 3             |
 
-## Q10 What was the volume of orders for each day of the week?
+## Question 10; What was the volume of orders for each day of the week?
 ````sql
 SELECT 
     dayofweek(order_time) AS week_day, COUNT(*) AS pizza_ordered
