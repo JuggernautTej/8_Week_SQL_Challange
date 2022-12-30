@@ -317,7 +317,7 @@ FROM
 | C        | 2021-01-01  | ramen        | 12    | N           |
 | C        | 2021-01-07  | ramen        | 12    | N           |
 
-### B.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
+### B. Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
 ````sql
 with diner_membership as (SELECT 
     s.customer_id AS customer,
@@ -341,7 +341,8 @@ FROM
     else rank() over(partition by customer, diner_member order by order_date)
     end as ranking 
     from diner_membership
-      ````
+  ````
+  
 | customer |  order_date | product_name | price | diner_member | ranking |
 | -------- | ----------- | ------------ | ----- | -----------  |-------  |
 | A        | 2021-01-01  | curry        | 15    | N            | null    |
