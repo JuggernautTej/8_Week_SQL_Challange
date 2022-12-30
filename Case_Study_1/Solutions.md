@@ -230,6 +230,7 @@ update menu set points_for_week1_membership = '300' where product_id= '2';
 update menu set points_for_week1_membership = '240' where product_id= '3';
 select * from menu;
   ````
+  
 | product_id | product_name | price | points | points_for_week1_membership |
 | ---------- | ------------ | ----- | ------ | --------------------------- |
 | 1          | sushi        | 10    | 200    | 200                         |
@@ -267,7 +268,95 @@ WHERE
     s.customer_id = 'B'
         AND s.order_date BETWEEN '2021-01-09' AND '2021-01-16';
   ````
+  
 | Total_Points |
 | ------------ |
 | 440          |
   
+### Customer C is not a paying member.
+
+## Bonus Questions
+### A. Recreate Recreate the following table output using the available data:
+
+![SQLChallengeWeek1_Bonus Question A](https://user-images.githubusercontent.com/88348888/204283728-a793d544-315b-48f0-a2e3-6e6f8f3e245b.JPG)
+
+````sql
+SELECT 
+    s.customer_id AS customer,
+    s.order_date AS order_date,
+    m.product_name AS product_name,
+    m.price AS price,
+    CASE
+        WHEN m2.join_date > s.order_date THEN 'N'
+        WHEN m2.join_date <= s.order_date THEN 'Y' else 'N'
+    END AS diner_member
+FROM
+    sales s
+        LEFT JOIN
+    menu m ON s.product_id = m.product_id
+        LEFT JOIN
+    members m2 ON s.customer_id = m2.customer_id
+    ORDER BY s.customer_id,s.order_date,m.product_name
+  ````
+  
+| customer |  order_date | product_name | price | diner_member|
+| -------- | ----------- | ------------ | ----- | ----------- |
+| A        | 2021-01-01  | curry        | 15    | N           |
+| A        | 2021-01-01  | sushi        | 10    | N           |
+| A        | 2021-01-07  | curry        | 15    | Y           |
+| A        | 2021-01-10  | ramen        | 12    | Y           |
+| A        | 2021-01-11  | ramen        | 12    | Y           |
+| A        | 2021-01-11  | ramen        | 12    | Y           |
+| B        | 2021-01-01  | curry        | 15    | N           |
+| B        | 2021-01-02  | curry        | 15    | N           |
+| B        | 2021-01-04  | sushi        | 10    | N           |
+| B        | 2021-01-11  | sushi        | 10    | Y           |
+| B        | 2021-01-16  | ramen        | 12    | Y           |
+| B        | 2021-02-01  | ramen        | 12    | Y           |
+| C        | 2021-01-01  | ramen        | 12    | N           |
+| C        | 2021-01-01  | ramen        | 12    | N           |
+| C        | 2021-01-07  | ramen        | 12    | N           |
+
+### B.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
+````sql
+with diner_membership as (SELECT 
+    s.customer_id AS customer,
+    s.order_date AS order_date,
+    m.product_name AS product_name,
+    m.price AS price,
+    CASE
+        WHEN m2.join_date > s.order_date THEN 'N'
+        WHEN m2.join_date <= s.order_date THEN 'Y' else 'N'
+    END AS diner_member
+FROM
+    sales s
+        LEFT JOIN
+    menu m ON s.product_id = m.product_id
+        LEFT JOIN
+    members m2 ON s.customer_id = m2.customer_id
+    ORDER BY s.customer_id,s.order_date,m.product_name)
+    select * , 
+    case 
+    when diner_member = 'N' then 'null' 
+    else rank() over(partition by customer, diner_member order by order_date)
+    end as ranking 
+    from diner_membership
+      ````
+| customer |  order_date | product_name | price | diner_member | ranking |
+| -------- | ----------- | ------------ | ----- | -----------  |-------  |
+| A        | 2021-01-01  | curry        | 15    | N            | null    |
+| A        | 2021-01-01  | sushi        | 10    | N            | null    |
+| A        | 2021-01-07  | curry        | 15    | Y            | 1       |
+| A        | 2021-01-10  | ramen        | 12    | Y            | 2       |
+| A        | 2021-01-11  | ramen        | 12    | Y            | 3       |
+| A        | 2021-01-11  | ramen        | 12    | Y            | 3       |
+| B        | 2021-01-01  | curry        | 15    | N            | null    |
+| B        | 2021-01-02  | curry        | 15    | N            | null    |
+| B        | 2021-01-04  | sushi        | 10    | N            | null    |
+| B        | 2021-01-11  | sushi        | 10    | Y            | 1       |
+| B        | 2021-01-16  | ramen        | 12    | Y            | 2       |
+| B        | 2021-02-01  | ramen        | 12    | Y            | 3       |
+| C        | 2021-01-01  | ramen        | 12    | N            | null    |
+| C        | 2021-01-01  | ramen        | 12    | N            | null    |
+| C        | 2021-01-07  | ramen        | 12    | N            | null    |
+    
