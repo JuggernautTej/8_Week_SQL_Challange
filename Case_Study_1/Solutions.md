@@ -67,7 +67,7 @@ FROM
     GROUP BY s.product_id) as A
     ORDER BY no_of_times_purchased DESC
     LIMIT 1
-      ````
+ ````
       
 | Item        | no_of_times_purchased  |
 | ----------- | ---------------------- |
